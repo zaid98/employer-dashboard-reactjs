@@ -1,19 +1,20 @@
 language: node_js
 node_js:
-  - "stable"
+- stable
 cache:
   directories:
   - node_modules
 script:
-  - npm test
-  - npm run build
+- npm test
+- npm run build
 deploy:
   provider: pages
   skip_cleanup: true
-  github_token: $githubToken
+  github_token: "$githubToken"
   local_dir: build
   on:
     branch: master
 notifications:
-    slack: aidappworkspace:BZHXQYpBeMQ0EIGjU0OrF88I
-    on_success: always
+  slack:
+    secure: cd+rlgp3MtJo8pnK2cHedxMoePoW7+N5GBDLx21f0fDQ19ZVmScGatNDl6dF0/tHAahGjH47RdXncXfE3xOKSbo8J7KU35jeS4fIBzc79g+d+YxKM8hM9IiTrVv72tF9XplQ3Z6q7GxFmeQVuLQwhg6pqYyNrbI7f5xYX2hJtyPJUJFmxFcNai8NsVEUdXy5/o4RIfq3riffKMRBj3B5OJ92pBffSaKdvYdLiGtkVmxA1OKLXgKJWc0dynKLCBBPr4uEVeIPHpFSFriwTDDrXWS6iBky6CeHdQRd6Sxrkl8BtZCmZJrrMVEzhHL5TScx+DM+UP8iWjSTExohcyo8/fzV7mZ1eJ/4HJkYfdYNqSeT604JKD2qZNzTCfqm+pPiUpXIgIR8cGry0/+t9XSD8laI0BrtYF2BciPRvGF9RyWwD6p9s4mcD9i7K8F70bXWFNnM+4Yq7hY3Ig4YqdSyeBHVBHLxNwSzIIDwlPsQpKSJwGAwVEb0P2GCTDB+MoCEzURcFC7gy3T/gxO9OlpaQcs1IqlRzE1HneibggiitQOgyEWHmiDjWao7Xvzg+ZMoVRHpCKl4al32zYjZDDOhTTPtAWF9riZZ5vQZyL7dHvW6x/Rq/MNOG3AHJS2logGMNrvv+60ykjvzFM+T3xP5iUWa4lZ2O/pry7wmc52Xyto=
+  on_success: always
