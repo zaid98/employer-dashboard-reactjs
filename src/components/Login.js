@@ -66,7 +66,7 @@ function SimpleCard(props) {
                     <AccountCircle />
                   </Grid>
                   <Grid item>
-                    <TextField id="input-with-icon-grid" label="Enter your name" />
+                    <TextField id="input-with-icon-grid" label="Enter your number" />
                   </Grid>
                 </Grid>
               </div>

@@ -58,7 +58,7 @@ function SimpleCard(props) {
             color="textSecondary"
             align="center"
           >
-            We have sent you a One Time Password (OTP) <br />
+            We have sent you a One Time Password (OTP) <br/>
             Haven't received it yet?
           </Typography>
           <CardActions>
