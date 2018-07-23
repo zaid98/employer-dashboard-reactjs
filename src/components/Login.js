@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -42,13 +42,20 @@ const styles = {
     marginLeft: "22vw"
   }
 };
-function callotp() {
-  <Otp />;
-}
-function SimpleCard(props) {
-  const { classes } = props;
 
-  return (
+ 
+class SimpleCard extends Component {
+ constructor(props) {
+    super(props);
+    this.state={otpcalling:false}
+ }
+  otpTrigger() {
+    this.setState({ otpcalling: true });
+  }
+  
+  render (){
+    const { classes } = this.props;
+    return(
     <div className="body">
       <div>
         <center>
@@ -76,8 +83,12 @@ function SimpleCard(props) {
                 variant="contained"
                 color="primary"
                 className={classes.button}
-                onClick={callotp}
+                onClick={this.otpTrigger.bind(this)}
               >
+              {/* If state shows that otpcalling is true, it'll render this component */}
+              {this.state.otpcalling && 
+              <Otp/>
+              }
                 Next
               </Button>
             </CardActions>
@@ -85,7 +96,8 @@ function SimpleCard(props) {
         </center>
       </div>
     </div>
-  );
+            );
+    }
 }
 
 SimpleCard.propTypes = {
