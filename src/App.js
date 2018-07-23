@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.scss";
-import Login from "./Components/Login";
+import Login from "./components/Login";
 class App extends Component {
   render() {
     return (
