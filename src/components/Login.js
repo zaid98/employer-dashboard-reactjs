@@ -9,9 +9,6 @@ import Typography from "@material-ui/core/Typography";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import Input from "@material-ui/core/Input";
-import InputLabel from "@material-ui/core/InputLabel";
-import InputAdornment from "@material-ui/core/InputAdornment";
 import Otp from "./Otp";
 const styles = {
   body: {
@@ -24,7 +21,7 @@ const styles = {
     position: "relative",
     width: "30vw",
     boxShadow:
-      "rgba(255, 0, 0, 0.117647) 0px 1px 4px, rgba(255, 0, 0, 0.117647) 0px 1px 4px"
+      "#111"
   },
   textField: {
     width: 200
@@ -50,7 +47,6 @@ function callotp() {
 }
 function SimpleCard(props) {
   const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <div className="body">
@@ -70,7 +66,7 @@ function SimpleCard(props) {
                     <AccountCircle />
                   </Grid>
                   <Grid item>
-                    <TextField id="input-with-icon-grid" label="With a grid" />
+                    <TextField id="input-with-icon-grid" label="Enter your number" />
                   </Grid>
                 </Grid>
               </div>

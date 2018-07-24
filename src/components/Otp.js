@@ -8,9 +8,6 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 
-// import InputAdornment from '@material-ui/core/InputAdornment';
-// import AccountCircle from '@material-ui/icons/AccountCircle';
-
 const styles = {
   card: {
     width: 500,
@@ -39,7 +36,6 @@ const styles = {
 
 function SimpleCard(props) {
   const { classes } = props;
-  const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <div id="page1">
@@ -62,7 +58,7 @@ function SimpleCard(props) {
             color="textSecondary"
             align="center"
           >
-            We have sent you a One Time Password (OTP) <br />
+            We have sent you a One Time Password (OTP) <br/>
             Haven't received it yet?
           </Typography>
           <CardActions>
