@@ -17,9 +17,9 @@ import {grey, amber, red} from '@material-ui/core/colors';
 const styles = theme => ({
   root: {
     width: '40%',
-    height:'50%',
+    height:'100%',
     marginLeft:800,
-    backgroundColor: theme.palette.background.red,
+    backgroundColor: "#fff",
   },
   card:{
     height: 140,

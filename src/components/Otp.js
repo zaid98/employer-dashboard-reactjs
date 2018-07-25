@@ -7,7 +7,8 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Tasks from "./Tasks";
 const styles = {
   card: {
     width: 500,
@@ -26,13 +27,13 @@ const styles = {
 };
 
 class SimpleCard extends Component{
-
+constructor(props){
+  super(props);
+}
 
 render(){
     const { classes } = this.props;
-  return (
-    <div id="page1">
-      <Card />
+  return (<div>
       <Card className={classes.card}>
         <CardContent className={classes.cardcontent}>
           <Typography variant="headline" component="h2">
@@ -55,18 +56,20 @@ render(){
             Haven't received it yet?
           </Typography>
           <CardActions>
-            <Button
+          <Link to={'/Tasks'}>  <Button
               variant="contained"
               color="primary"
               className={classes.button}
             >
               NEXT
             </Button>
+          </Link>
           </CardActions>
         </CardContent>
       </Card>
     </div>
-  );}
+  );
+ }
 }
 
 SimpleCard.propTypes = {

@@ -10,7 +10,7 @@ class Landing extends Component{
     return(<div>
 
       <h1>Landing page</h1>
-       <button ><Link to ={"/Login"} > hi </Link></button>
+       <button ><Link to ={"/Login"} >Get Started</Link></button>
     </div>);
   }
 }
