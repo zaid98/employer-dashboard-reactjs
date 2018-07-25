@@ -7,8 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Tasks from "./Tasks";
+import { BrowserRouter as Link } from 'react-router-dom';
 const styles = {
   card: {
     width: 500,
