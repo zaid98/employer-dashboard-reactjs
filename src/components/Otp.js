@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Component} from "react";
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -14,15 +14,6 @@ const styles = {
     height: 300,
     margin: "150px 30%"
   },
-  bullet: {
-    display: "inline-block",
-    margin: "0 2px",
-    transform: "scale(0.8)"
-  },
-  title: {
-    marginBottom: 16,
-    fontSize: 14
-  },
   pos: {
     marginBottom: 12
   },
@@ -34,9 +25,11 @@ const styles = {
   cardcontent: { padding: 70 }
 };
 
-function SimpleCard(props) {
-  const { classes } = props;
+class SimpleCard extends Component{
 
+
+render(){
+    const { classes } = this.props;
   return (
     <div id="page1">
       <Card />
@@ -73,7 +66,7 @@ function SimpleCard(props) {
         </CardContent>
       </Card>
     </div>
-  );
+  );}
 }
 
 SimpleCard.propTypes = {

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Component } from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -10,50 +11,55 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import Otp from "./Otp";
+
 const styles = {
-  body: {
-    background: ""
+  page:{
+    fontFamily:'Roboto',
   },
   card: {
-    Width: "10vw",
-    height: "45vh",
-    top: "20vw",
-    position: "relative",
-    width: "30vw",
-    boxShadow:
-      "#111"
+    width: 500,
+    height: 300,
+    margin: "150px 30%",
+    boxShadow:"111"
   },
-  textField: {
-    width: 200
-  } /*
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(1)',
-  },*/,
-  title: {
-    marginBottom: 16,
-    fontSize: 14
-  },
+  // textField: {
+  //   width: 200,
+  // },
   pos: {
     marginBottom: 12
   },
-  button: {
-    marginLeft: "22vw"
-  }
-};
-function callotp() {
-  <Otp />;
-}
-function SimpleCard(props) {
-  const { classes } = props;
+   button: {
+      marginLeft: 280,
+      borderRadius: 30,
+      marginTop:-30
+    },
+      cardcontent: {
+         padding: 70,
+    },
+    tc:{
+      marginTop:-140,
+      marginLeft:440,
+      color:'#fff',
+    },
 
-  return (
-    <div className="body">
-      <div>
-        <center>
+};
+
+
+class SimpleCard extends Component {
+ constructor(props) {
+    super(props);
+    this.state={otpcalling:false}
+ }
+  otpTrigger() {
+    this.setState({ otpcalling: true });
+  }
+
+  render (){
+    const { classes } = this.props;
+    return(
+        <div classesName={classes.page}>
           <Card className={classes.card}>
-            <CardContent>
+            <CardContent className={classes.cardcontent}>
               <Typography variant="headline" component="h2">
                 Welcome Back!
               </Typography>
@@ -72,20 +78,22 @@ function SimpleCard(props) {
               </div>
             </CardContent>
             <CardActions>
+              <Link to={'/Otp'}>
               <Button
                 variant="contained"
                 color="primary"
                 className={classes.button}
-                onClick={callotp}
-              >
-                Next
+                onClick={this.otpTrigger.bind(this)}
+              >  Next
               </Button>
+              </Link>
+              {/* <Route exact path='/Otp' component={Otp}/> */}
             </CardActions>
           </Card>
-        </center>
+          <h5 className={classes.tc}>ContactUs</h5>
       </div>
-    </div>
-  );
+            );
+    }
 }
 
 SimpleCard.propTypes = {
