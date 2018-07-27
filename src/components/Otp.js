@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import PropTypes from "prop-types";
 import { withStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
@@ -7,6 +8,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import integrated from "./integrated";
 
 const styles = {
   card: {
@@ -32,7 +34,6 @@ render(){
     const { classes } = this.props;
   return (
     <div id="page1">
-      <Card />
       <Card className={classes.card}>
         <CardContent className={classes.cardcontent}>
           <Typography variant="headline" component="h2">
@@ -55,6 +56,7 @@ render(){
             Haven't received it yet?
           </Typography>
           <CardActions>
+            <Link to={'/integrated'}>
             <Button
               variant="contained"
               color="primary"
@@ -62,6 +64,7 @@ render(){
             >
               NEXT
             </Button>
+          </Link>
           </CardActions>
         </CardContent>
       </Card>

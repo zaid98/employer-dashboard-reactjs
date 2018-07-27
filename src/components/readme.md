@@ -1,2 +1,2 @@
 # Struct
-Components will be added here
+components will be added here

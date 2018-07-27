@@ -1,6 +1,7 @@
 import React,{Component} from 'react';
 import Sidebar from './Sidebar';
 import Tasks from './Tasks';
+/*
 let journal = [
   {events: ["work", "touched tree", "pizza",
             "running", "television"],
@@ -11,18 +12,20 @@ let journal = [
   {events: ["weekend", "cycling", "break", "peanuts",
             "beer"],
    squirrel: true},
-  /* and so on... */
+   and so on...
 ];
+*/
 class Integrated extends Component{
-
-
   render(){
     return(
 
       <div>
-journal.map((user)=><li>{user.squirrel}</li>)
-</div>
+        <Sidebar/>
+        <Tasks/>
+        {/* journal.map((user)=><li>{user.squirrel}</li>) */}
+    </div>
     );
   }
 }
+
 export default Integrated;

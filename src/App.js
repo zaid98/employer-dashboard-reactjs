@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./App.scss";
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import Login from "./Components/Login";
-import Otp from "./Components/Otp";
-import Tasks from "./Components/Tasks";
-import Landing from "./Components/Landing";
-
+import Login from "./components/Login";
+import Otp from "./components/Otp";
+import Tasks from "./components/Tasks";
+import Landing from "./components/Landing";
+import integrated from "./components/integrated";
 class App extends Component{
   render(){
     return(
@@ -21,6 +21,7 @@ class App extends Component{
           <Route exact path='/' component={Landing}/>
           <Route exact path='/Login' component={Login}/>
           <Route exact path='/Otp' component={Otp}/>
+          <Route exact path='/integrated' component={integrated}/>
         </Switch>
       </div>
     </Router>
