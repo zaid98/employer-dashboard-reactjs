@@ -17,6 +17,7 @@ import {grey, amber, red} from '@material-ui/core/colors';
 const styles = theme => ({
   root: {
     width: '40%',
+    marginTop:"-48%",
     height:'50%',
     marginLeft:800,
     backgroundColor: theme.palette.background.red,
@@ -84,11 +85,6 @@ const styles = theme => ({
 
 });
 
-const theme = createMuiTheme({
-  palette: {
-    primary: green,
-  },
-});
 class SearchBar extends Component{
   constructor(props){
     super(props);
@@ -99,20 +95,23 @@ class SearchBar extends Component{
     );
   }
 }
+
 class Tasks extends Component {
   constructor(props){
     super(props);
       this.state={
-        showSearchBar:false
+        showSearchBar:false,
       };
       this.Assign=this.Assign.bind(this);
     }
+
     Assign(){
       this.setState({showSearchBar:true});
     }
+
+
   render(){
   const { classes } = this.props;
-
   return (
     <div className={classes.root}>
       <Card className={classes.card}>
@@ -125,32 +124,19 @@ class Tasks extends Component {
                </Typography>
              </CardContent>
            <CardActions>
-             {!this.state.showPiyushBar ? (
-               <Button
-                 onCick={this.Assign.bind(this)}
+              <Button
+                 onCick={this.Assign}
                  variant="contained"
                  color="primary"
                  size="small"
                  className={classes.button1}
                > Add Assignee+
-             </Button>): (
-              <SearchBar/>
-              )}
-
-             {/* {!this.state.showSearchBar} ? (
-             <Button
-               onCick={this.Assign.bind(this)}
-               variant="contained"
-               color="primary"
-               size="small"
-               className={classes.button1}
-             > Add Assignee+
-           </Button>):
-           (<SearchBar/>); */}
-
-
+             </Button>
+             {this.state.showSearchBar?<SearchBar/>:null}
            </CardActions>
-         </Card>
+           <Typography >
+          </Typography>
+           </Card>
 
       <Divider />
 
