@@ -13,7 +13,7 @@ import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import Button from "@material-ui/core/Button";
 import AddIcon from "@material-ui/icons/Add";
-
+import Grid from "@material-ui/core/Grid";
 
 const drawerWidth = 240;
 
@@ -28,13 +28,12 @@ const styles = theme => ({
     position: "relative",
     display: "flex",
     width: "20%",
-    marginLeft: -8
+    marginLeft: -8,
   },
   appBar: {
     position: "absolute",
     backgroundColor: "#202020",
     height: "0%",
-
     transition: theme.transitions.create(["margin", "width"], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen
@@ -103,7 +102,7 @@ const styles = theme => ({
 
   button: {
     margin: theme.spacing.unit,
-    marginLeft: 58,
+    marginLeft: '35%',
     backgroundColor: "#02b4e4"
   },
   extendedIcon: {
@@ -134,10 +133,15 @@ const styles = theme => ({
 });
 
 class PersistentDrawer extends React.Component {
-  state = {
+  constructor(props){
+    super(props);
+    this.state = {
     open: false,
-    anchor: "left"
+    anchor: "left",
+    showList:false,
   };
+  this.AddNames=this.AddNames.bind(this);
+}
 
   handleDrawerOpen = () => {
     this.setState({ open: true });
@@ -146,6 +150,11 @@ class PersistentDrawer extends React.Component {
   handleDrawerClose = () => {
     this.setState({ open: false });
   };
+
+  AddNames=()=>{
+    this.setState({showList:!this.state.showList});
+    };
+
 
   // handleChangeAnchor = event => {
   //   this.setState({
@@ -156,7 +165,7 @@ class PersistentDrawer extends React.Component {
   render() {
     const { classes, theme } = this.props;
     const { anchor, open } = this.state;
-
+    const { showList }=this.state;
     const drawer = (
       <Drawer
         variant="persistent"
@@ -194,7 +203,13 @@ class PersistentDrawer extends React.Component {
       after = drawer;
     }
 
+{/*Map property*/}
+
+    const data=[{"name":"abc"},{"name":"czx"}];
+    const listItems=data.map((d)=><li key={d.name}>{d.name}</li>);
     return (
+      <Grid container>
+        <Grid item xs={12}>
       <div className={classes.root}>
         <div className={classes.appFrame}>
           <AppBar
@@ -234,9 +249,11 @@ class PersistentDrawer extends React.Component {
               mini
               color="primary"
               aria-label="Add"
+              onClick={this.AddNames}
               className={classes.button}
             >
-              <AddIcon />
+               <AddIcon />
+
             </Button>
             <input
               placeholder=" Search "
@@ -245,13 +262,24 @@ class PersistentDrawer extends React.Component {
               style={{ color: "white", textAlign: "center" }}
             />
 
-            <Typography style={{ color: "white" }}>
-              {"List of Employees"}
+            <Typography style={{ color: "white" }} className={classes.ListName}>
+              {showList && listItems}
             </Typography>
+            <h3 style={{color:'#fff',fontWeight:'bold',marginTop:'25%',fontSize:'135%',wordSpacing:1}}>
+              Your company code is<br/>
+            </h3>
+            <center>
+            <h1 style={{color:'#01b4e4',}}>AID365</h1>
+          </center>
+            <h3 style={{color:'#fff',fontWeight:'bold',fontSize:'135%',wordSpacing:1}}>
+              Your team members can join saledrive with this code.
+            </h3>
           </main>
           {after}
         </div>
       </div>
+      </Grid>
+    </Grid>
     );
   }
 }

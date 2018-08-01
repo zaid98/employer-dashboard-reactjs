@@ -12,14 +12,15 @@ import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import green  from '@material-ui/core/styles';
-import {grey, amber, red} from '@material-ui/core/colors';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+
 const styles = theme => ({
   root: {
     width: '40%',
     height:'50%',
     marginLeft:800,
     backgroundColor: theme.palette.background.red,
+    marginTop:'-48%',
   },
   card:{
     height: 140,
@@ -84,18 +85,13 @@ const styles = theme => ({
 
 });
 
-const theme = createMuiTheme({
-  palette: {
-    primary: green,
-  },
-});
 class SearchBar extends Component{
   constructor(props){
     super(props);
 }
   render(){
     return(
-      <div><input placeholder="SearchBar"/></div>
+      <div><input placeholder="SearchBar"/>helloworld</div>
     );
   }
 }
@@ -125,7 +121,7 @@ class Tasks extends Component {
                </Typography>
              </CardContent>
            <CardActions>
-             {!this.state.showPiyushBar ? (
+             <Link to={'/SearchBar'}>
                <Button
                  onCick={this.Assign.bind(this)}
                  variant="contained"
@@ -133,9 +129,8 @@ class Tasks extends Component {
                  size="small"
                  className={classes.button1}
                > Add Assignee+
-             </Button>): (
-              <SearchBar/>
-              )}
+             </Button>
+           </Link>
 
              {/* {!this.state.showSearchBar} ? (
              <Button

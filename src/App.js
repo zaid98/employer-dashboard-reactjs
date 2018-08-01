@@ -6,6 +6,7 @@ import Otp from "./components/Otp";
 import Tasks from "./components/Tasks";
 import Landing from "./components/Landing";
 import integrated from "./components/integrated";
+import SearchBar from "./components/Tasks";
 class App extends Component{
   render(){
     return(
@@ -22,6 +23,7 @@ class App extends Component{
           <Route exact path='/Login' component={Login}/>
           <Route exact path='/Otp' component={Otp}/>
           <Route exact path='/integrated' component={integrated}/>
+          <Route exact path='/searchbar' component={SearchBar}/>
         </Switch>
       </div>
     </Router>
