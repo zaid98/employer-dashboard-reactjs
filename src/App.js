@@ -6,24 +6,29 @@ import Otp from "./components/Otp";
 import Tasks from "./components/Tasks";
 import Landing from "./components/Landing";
 import integrated from "./components/integrated";
-import SearchBar from "./components/Tasks";
+import Sidebar from "./components/Sidebar";
+import Maps from "./components/Maps";
+import Profile from "./components/Profile";
+import Settings from "./components/Settings";
+import Plan from "./components/Plan";
+
 class App extends Component{
   render(){
     return(
       <Router>
-      <div className="App">
-        {/* <ul>
-          <li><Link to={'/'}>Landing</Link></li>
-          <li><Link to={'/Login'}>Login</Link></li>
-          <li><Link to={'/Tasks'}>Tasks</Link></li>
-        </ul> */}
-
+      <div className="App" >
         <Switch>
+          <Route exact path='/Tasks' component={Tasks}/>
+          <Route exact path='/Sidebar' component={Sidebar}/>
           <Route exact path='/' component={Landing}/>
           <Route exact path='/Login' component={Login}/>
           <Route exact path='/Otp' component={Otp}/>
           <Route exact path='/integrated' component={integrated}/>
-          <Route exact path='/searchbar' component={SearchBar}/>
+          <Route exact path='/sidebar' component={Sidebar}/>
+          <Route exact path='/Maps' component={Maps}/>
+          <Route exact path='/Settings' component={Settings}/>
+          <Route exact path='/Profile' component={Profile}/>
+          <Route exact path='/Plan' component={Plan}/>
         </Switch>
       </div>
     </Router>

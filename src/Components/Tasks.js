@@ -13,7 +13,77 @@ import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import Grid from '@material-ui/core/Grid';
+import "./Tasks.css";
+import Bar from './Bar.jsx';
 
+class Tasks extends Component{
+  constructor(props){
+    super(props);
+    this.state={searchBar:false};
+  }
+  displaySearchBar=()=>{
+    this.setState({searchBar:!this.state.searchBar});
+  }
+  render(){
+    const { classes }=this.props;
+    let Search=null;
+    if(this.state.searchBar){
+      Search=(
+        <div>
+        <Bar/>
+        </div>
+      )
+    }
+    return(
+      <div class = "cards" >
+        <Card class="card1">
+          <CardContent>
+            <Typography variant="headline" component="h2">
+              Assign a new task to
+            </Typography>
+            <Typography color="textSecondary">
+              Click on 'Add Assignee' to assign a new task
+              <br/>to a team member.
+            </Typography>
+            <button class="button1" style={{display:'inline'}} onClick={this.displaySearchBar}>
+              Add Assignee+
+            </button>
+            <Typography style={{display:'inline'}}>{Search}</Typography>
+          </CardContent>
+        </Card>
+        <Card class="card2">
+          <CardContent>
+               <Typography variant="headline" component="h2">
+                 Add a task title
+               </Typography>
+               <input
+                 type="text"
+                 class="input1"
+                 placeholder="&nbsp;&nbsp;Title..."
+               />
+             </CardContent>
+        </Card>
+        <Card class="card3">
+          <CardContent>
+           <Typography variant="headline" component="h2">
+             Describe the task in<br/>the space below
+           </Typography>
+           <input
+             type="text"
+             class="input2"
+             placeholder="&nbsp;&nbsp;&nbsp;Description..."
+           />
+           <button class="button2">Done</button>
+         </CardContent>
+        </Card>
+    </div>
+    );
+  }
+}
+export default Tasks;
+/*
 const styles = theme => ({
   root: {
     width: '40%',
@@ -132,7 +202,7 @@ class Tasks extends Component {
              </Button>
            </Link>
 
-             {/* {!this.state.showSearchBar} ? (
+              {!this.state.showSearchBar} ? (
              <Button
                onCick={this.Assign.bind(this)}
                variant="contained"
@@ -141,7 +211,7 @@ class Tasks extends Component {
                className={classes.button1}
              > Add Assignee+
            </Button>):
-           (<SearchBar/>); */}
+           (<SearchBar/>);
 
 
            </CardActions>
@@ -208,3 +278,4 @@ Tasks.propTypes = {
 };
 
 export default withStyles(styles)(Tasks,SearchBar);
+*/

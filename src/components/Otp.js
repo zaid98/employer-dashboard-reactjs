@@ -8,31 +8,40 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
+import Tasks from "./Tasks";
 import integrated from "./integrated";
 import Grid from "@material-ui/core/Grid";
 import Logo from "./sales_drive-min.jpg";
+import "./Otp.css";
 
 const styles = {
-  logo:{
-    width:'10%',
-    height:'5%',
-    marginBottom:'-2%',
+  saledrive:{
+    height:'130%',
+    width:'40%',
+
   },
   card: {
-    width: 500,
-    height: 300,
+    width: '110%',
+    height: '73%',
     marginTop:'30%',
+    color:'#000',
   },
   pos: {
-    marginBottom: 12
+    marginBottom: '2%',
+    marginTop:'4%',
+
   },
   button: {
-    marginLeft: 280,
-    borderRadius: '10%',
+    marginLeft:'70%',
+    marginBottom:'2%',
+    width:'20%',
+    color:'#fff',
+    borderRadius: '5%',
     backgroundColor:'#01b4e4',
+    textDecoration:'none',
   },
-  phone: { width: 370 },
-  cardcontent: { padding: 70 },
+  phone: { width: 370 ,marginTop:'7%'},
+
   tc:{
     textDecoration:'none',
     color:'#fff',
@@ -41,82 +50,81 @@ const styles = {
     color:'#fff',
     marginTop:75
   },
+  entirePage:{
+    display:'grid',
+    gridTemplateColumns: 'repeat(3,1fr)',
+		gridTemplateRows:  'repeat(3, minmax(150, auto))',
+    background:'linear-gradient(to bottom, #fff 50%,#01b4e4 50%)',
+    fontFamily:'Roboto',
+    height:'96vh',
+  },
+  cardContents:{
+    display:'grid',
+    gridTemplateColumns:'repeat(3fr 1fr 1fr) ',
+    gridTemplateRows:  'repeat(3, minmax(150, auto))',
+  },
+  textfield:{
+    width:'80%',
+    color:'#000',
+  },
+  pass:{
+    marginBottom:'8%',
+    marginTop:'1%',
+  },
+
 };
 
 class SimpleCard extends Component{
-
-
 render(){
     const { classes } = this.props;
   return (
-    <div id="page1" style={
-      {
-        background: "linear-gradient(to bottom, #fff 50%,#01b4e4 50%)",
-        height:'96vh',
-      }
-    }>
-    <div><img className={classes.logo} src={Logo} /></div>
-      <Grid container spacing={12}>
-        <Grid item xs={4}>
-          <div></div>
-        </Grid>
-        <Grid Item xs={4}>
-      <Card className={classes.card}>
-        <CardContent className={classes.cardcontent}>
-          <Typography variant="headline" component="h2">
-            Enter the OTP.
-          </Typography>
-          <Typography className={classes.pos} color="textSecondary">
-            Please enter the one time password
-          </Typography>
-          <TextField
-            className={classes.phone}
-            id="input-with-icon-textfield"
-            placeholder="OTP"
-          />
-          <Typography
-            className={classes.pos}
-            color="textSecondary"
-            align="center"
-          >
-            We have sent you a One Time Password (OTP) <br/>
-            Haven't received it yet?
-          </Typography>
-          <CardActions>
-            <Link to={'/integrated'}>
+      <div className={classes.entirePage}>
+        <img src={Logo} className={classes.saledrive}/>
+        <div>&nbsp;&nbsp;&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <Card className={classes.card}>
+            <CardContent className={classes.cardcontent}>
+             <Typography variant="display1" component="h1" style={{color:'#000',marginTop:'4.5%'}}>
+               Enter the OTP.
+             </Typography>
+             <Typography></Typography>
+             <Typography></Typography>
+             <Typography className={classes.pass} color="textSecondary">
+               Please enter the one time password
+             </Typography>
+             <TextField
+               className={classes.textfield}
+               id="input-with-icon-textfield"
+               placeholder="OTP"
+             />
+             <Typography
+               className={classes.pos}
+               color="textSecondary"
+               align="center"
+             >
+               We have sent you a One Time Password (OTP) <br/>
+               Haven't received it yet?
+             </Typography>
+           </CardContent>
+          <Link to={'/integrated'}>
             <Button
               variant="contained"
-              color="primary"
               className={classes.button}
-            >
-              NEXT
-            </Button>
+            >NEXT</Button>
           </Link>
-          </CardActions>
-        </CardContent>
-      </Card>
-    </Grid>
-    <Grid item xs={4}>
-      <div></div>
-    </Grid>
-  </Grid>
-  <Grid container spacing={12}>
-    <Grid item xs={4}></Grid>
-    <Grid item xs={3}><a href="#"><h5 className={classes.tc} style={{textDecoration:'none'}}>ContactUs</h5></a></Grid>
-    <Grid item xs={1}><h5 className={classes.tc}>Terms Of Service</h5></Grid>
-    <Grid item xs={1}><h5 className={classes.tc}>Privacy</h5></Grid>
-    <Grid item xs={3}><h5></h5></Grid>
-  </Grid>
+        </Card>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div style={{marginTop:'6%',color:'#fff'}}>ContactUs </div>
+        <div style={{marginTop:'6%',color:'#fff',marginLeft:'-33%'}}>Terms of Service&nbsp;&nbsp;Privacy</div>
+        <div></div>
+        <div style={{textAlign:'center',marginTop:'18%',color:'#fff',}}>@Copyright Aidapp Intelligence Pvt.Ltd.2018</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
 
-    <center>
-      <h5 className={classes.copyright}>@Copyright Aidapp Intelligence Pvt.Ltd.2018</h5>
-    </center>
-    </div>
-  );}
+      </div>
+    );
+  }
 }
-
-SimpleCard.propTypes = {
-  classes: PropTypes.object.isRequired
-};
 
 export default withStyles(styles)(SimpleCard);

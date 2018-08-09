@@ -14,173 +14,188 @@ import Otp from "./Otp";
 import Logo from './sales_drive-min.jpg';
 
 const styles = {
-logo:{
-  width:'10%',
-  height:'5%',
-  marginBottom:'-2%',
-},
-  page:{
-    fontFamily:'Roboto',
-    backgroundColor:'linear-gradient(to bottom, #fff 50%,#01b4e4 50%)',
-  },
-  card: {
-    width: '110%',
-    height: '70%',
-    boxShadow:"111",
-    marginTop:'32%',
-  },
-  // textField: {
-  //   width: 200,
-  // },
-  pos: {
-    marginBottom: 12
-  },
-   button: {
-      marginLeft: '520%',
-      borderRadius: '10%',
-      marginTop:-30,
-      backgroundColor:'#10b4e4',
+
+    /*new*/
+    saledrive:{
+      height:'130%',
+      width:'40%',
+
     },
-      cardcontent: {
-         padding: 70,
+    card: {
+      width: '110%',
+      height: '73%',
+      marginTop:'30%',
+      color:'#000',
     },
-    phone:{
-      width:'160%',
+    pos: {
+      marginBottom: '2%',
+      marginTop:'4%',
+
     },
+    button: {
+      marginLeft:'70%',
+      marginBottom:'2%',
+      width:'20%',
+      color:'#fff',
+      borderRadius: '5%',
+      backgroundColor:'#01b4e4',
+      textDecoration:'none',
+    },
+    phone: { width: 370 ,marginTop:'7%'},
+
     tc:{
       textDecoration:'none',
       color:'#fff',
     },
     copyright:{
       color:'#fff',
-      marginTop:80
-    }
+      marginTop:75
+    },
+    entirePage:{
+      display:'grid',
+      gridTemplateColumns: 'repeat(3,1fr)',
+      gridTemplateRows:  'repeat(3, minmax(150, auto))',
+      background:'linear-gradient(to bottom, #fff 50%,#01b4e4 50%)',
+      fontFamily:'Roboto',
+      height:'96vh',
+    },
+    cardContents:{
+      display:'grid',
+      gridTemplateColumns:'repeat(3fr 1fr 1fr) ',
+      gridTemplateRows:  'repeat(3, minmax(150, auto))',
+    },
+    textfield:{
+      width:'50%',
+      color:'#000',
+    },
+    pass:{
+      marginBottom:'2%',
+      marginTop:'1%',
+    },
 };
 
 
 class SimpleCard extends Component {
  constructor(props) {
     super(props);
-    this.state={otpcalling:false,number:'',number_error_text:null,disabled:true}
+    this.state={
+      otpcalling:false,
+      number:'',
+      number_error_text:null,
+      disabled:true}
  }
- isDisabled(){
-   let numberIsValid=false;
 
-   if(this.state.number===''||!this.state.number){
-     this.setState({
-       number_error_text:null
-     });
-   }
-   else{
-     if(this.state.number.length>=10){
-       numberIsValid=true
-       this.setState({
-         number_error_text:null
-       });
-     }else{
-       this.setState({
-         number_error_text:'Sorry,this is not a valid number '
-       });
-     }
-   }
-   if(numberIsValid){
-     this.setState({
-       disabled:false
-     });
-   }
- }
- changeValue(e,type){
-   const value=e.target.value;
-   const nextState={};
-   nextState[type]=value;
-   this.setState(nextState,()=>{
-     this.isDisabled()
-   });
- }
- submit(){
+ // setButtonStatus=()=>{
+ //   if(this.state.number.length>=12){
+ //     this.setState({disabled:false});
+ //   }
+ //   else{
+ //     this.setState({disabled:true});
+ //   }
+ // }
+ // isDisabled=()=>{
+ //   if(this.state.number===10)
+ //   {
+ //     this.setState({disabled:false});
+ //   }
+ //   else{
+ //     this.setState({disabled:true});
+ //   }
+ // }
 
- }
+   // let numberIsValid=false;
+   //
+   // if(this.state.number===''||!this.state.number){
+   //   this.setState({
+   //     number_error_text:null
+   //   });
+   // }
+   // else{
+   //   if(this.state.number.length>=10){
+   //     numberIsValid=true
+   //     this.setState({
+   //       number_error_text:null
+   //     });
+   //   }else{
+   //     this.setState({
+   //       number_error_text:'Sorry,this is not a valid number '
+   //     });
+   //   }
+   // }
+   // if(numberIsValid){
+   //   this.setState({
+   //     disabled:false
+   //   });
+   // }
+ //}
+ // changeValue(e,type){
+ //   const value=e.target.value;
+ //   const nextState={};
+ //   nextState[type]=value;
+ //   this.setState(nextState,()=>{
+ //     this.isDisabled()
+ //   });
+ // }
+
 
   render (){
     let {number,number_error_text,disabled}=this.state;
     const { classes } = this.props;
     return(
-      <form>
-        <div classesName={classes.page} style={
-          {
-            background: "linear-gradient(to bottom, #fff 50%,#01b4e4 50%)",
-            height:'96vh',
-          }
-        } >
-        <div><img className={classes.logo} src={Logo} /></div>
-        <Grid container spacing={12}>
-          <Grid item xs={4}>
-            <div></div>
-          </Grid>
-          <Grid item xs={4}>
-          <Card className={classes.card}>
+      <div className={classes.entirePage}>
+        <img src={Logo} className={classes.saledrive}/>
+        <div>&nbsp;&nbsp;&nbsp;</div>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <Card className={classes.card}>
             <CardContent className={classes.cardcontent}>
-              <Grid item>
-              <Typography variant="headline" component="h2">
-                Welcome Back!
-              </Typography>
-            </Grid>
-            <Grid item>
-              <Typography className={classes.pos} color="textSecondary">
-                Please enter your mobile number!
-              </Typography>
-            </Grid>
-              <div className={classes.margin}>
-                <Grid container spacing={8} alignItems="flex-end">
-                  <Grid item>
-                    <AccountCircle />  +91
-                  </Grid>
-                  <Grid item>
-                    <TextField
-                      className={classes.phone}
-                      label="Enter your number"
-                      type="tel"
-                      errorText={this.state.number_error_text}
-                      onChange={e => this.changeValue(e,'number')}
-                      required />
-                  </Grid>
-                </Grid>
-              </div>
-            </CardContent>
-            <CardActions>
-              <Link to={'/Otp'}>
-              <Grid item xs={12}>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                onClick={this.submit.bind(this)}
-                disabled={this.state.disabled}
-              >  Next
-              </Button>
-            </Grid>
-              </Link>
-              {/* <Route exact path='/Otp' component={Otp}/> */}
-            </CardActions>
-          </Card>
-        </Grid>
-        <Grid item xs={4}>
-          <div></div>
-        </Grid>
-      </Grid>
-      <Grid container spacing={12}>
-        <Grid item xs={4}></Grid>
-        <Grid item xs={3}><a href="#"><h5 className={classes.tc} style={{textDecoration:'none'}}>ContactUs</h5></a></Grid>
-        <Grid item xs={1}><h5 className={classes.tc}>Terms Of Service</h5></Grid>
-        <Grid item xs={1}><h5 className={classes.tc}>Privacy</h5></Grid>
-        <Grid item xs={3}><h5></h5></Grid>
-      </Grid>
-
-        <center>
-          <h5 className={classes.copyright}>@Copyright Aidapp Intelligence Pvt.Ltd.2018</h5>
-        </center>
+             <Typography variant="display1" component="h1" style={{color:'#000',marginTop:'4.5%'}}>
+               Welcome Back!
+             </Typography>
+             <Typography className={classes.pass} color="textSecondary">
+               Please enter your phone number to login
+             </Typography>
+         <Grid container spacing={8} alignItems="flex-end">
+             <Grid item>
+               <AccountCircle />  +91
+             </Grid>
+             <Grid item>
+               <TextField
+                 className={classes.phone}
+                 label="Enter your number"
+                 type="tel"
+                 errorText={this.state.number_error_text}
+                 // onChange={e => this.changeValue(e,'number')}
+                 onKeyUp="setButtonStatus(this,btnButton)"
+                 required />
+             </Grid>
+           </Grid>
+             <Typography
+               className={classes.pos}
+               color="textSecondary"
+               align="center"
+             >
+               &nbsp;&nbsp; <br/>
+               &nbsp;&nbsp;
+             </Typography>
+           </CardContent>
+          <Link to={'/Otp'}>
+            <Button
+              variant="contained"
+              className={classes.button}
+              disabled="false"
+              id="btnButton"
+            >NEXT</Button>
+          </Link>
+        </Card>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
+        <div style={{marginTop:'6%',color:'#fff'}}>ContactUs </div>
+        <div style={{marginTop:'6%',color:'#fff',marginLeft:'-33%'}}>Terms of Service&nbsp;&nbsp;Privacy</div>
+        <div></div>
+        <div style={{textAlign:'center',marginTop:'18%',color:'#fff',}}>@Copyright Aidapp Intelligence Pvt.Ltd.2018</div>
+        <div>&nbsp;&nbsp;&nbsp;&nbsp;</div>
       </div>
-    </form>
         );
     }
 }
